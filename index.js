@@ -20,27 +20,27 @@ client.on('message', message => {
     }
   }
 
-//  if (message.content === '!joinladder' || message.content === ':ladder:') {
-//    if (message.channel.name === 'race_signups') {
-//      role = message.guild.roles.find('name', 'FBW Ladder')
-//      message.member.addRole('FBW Ladder')
-//      message.member.send('You have been added to the #ladder channel. Please read the rules and refer to the "about" page on http://fbwladder.com for more information.')
-//    }
-//  }
-//
-//  if (message.channel.name === 'race_signups') {
-//    console.log('received race msg')
-//    if (message.content === '!race terran' ) {
-//      role = message.guild.roles.find('name', 'Terran Main')
-//      message.member.addRole(role)
-//    } else if (message.content === '!race zerg') {
-//      role = message.guild.roles.find('name', 'Zerg Main')
-//      message.member.addRole(role)
-//    } else if (message.content === '!race protoss') {
-//      role = message.guild.roles.find('name', 'Protoss Main')
-//      message.member.addRole(role)
-//    }
-//  }
+  if (message.content === '!joinladder' || message.content === ':ladder:') {
+    if (message.channel.name === 'race_signups') {
+      role = message.guild.roles.find('name', 'FBW Ladder')
+      message.member.addRole(role)
+      message.member.send('You have been added to the #ladder channel. Please read the rules and refer to the "about" page on http://fbwladder.com for more information.')
+    }
+  }
+
+  if (message.channel.name === 'race_signups') {
+    console.log('received race msg')
+    if (message.content === '!race terran' ) {
+      role = message.guild.roles.find('name', 'Terran Main')
+      message.member.addRole(role)
+    } else if (message.content === '!race zerg') {
+      role = message.guild.roles.find('name', 'Zerg Main')
+      message.member.addRole(role)
+    } else if (message.content === '!race protoss') {
+      role = message.guild.roles.find('name', 'Protoss Main')
+      message.member.addRole(role)
+    }
+  }
 });
 
 client.login(token);

@@ -41,6 +41,11 @@ client.on('message', message => {
       message.member.addRole(role)
     }
   }
+  
+  if (message.channel.name === 'race_signups' && message.content === '!help') {
+    message.member.send('Here are the following commands: \n !race zerg \n !race terran \n !race protoss \n !joinladder')
+    message.member.send('Thanks, and good luck!')
+  }
 });
 
 client.login(token);

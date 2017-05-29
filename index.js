@@ -10,37 +10,37 @@ looking_for_games = [];
 
 client.on('message', message => {
   if (message.content === '!lfg' && message.channel.name === 'ladder') {
-    user = { user: message.member, rating: 1200 }
+    console.log('received lfg message')
     if (looking_for_games.length >= 1) {
-      lower_limit = user.rating - 200
-      upper_limit = user.rating + 200
-      for (let [index, player] of looking_for_games.entries()) {
-        if (player.rating < upper_limit && player.rating > lower_limit) {
-          // remove player from looking_for_games
-          var chosen = looking_for_games.splice(index, 1)
-          message.channel.send('${user.user}, ${chosen.user} : You have been matched!');
-        }
-      }
+      var chosen = looking_for_games.splice(0, 1);
+      message.channel.send(message.member + ', ' + chosen + ' : You have been matched!');
     } else {
-      looking_for_games.push({ user: message.member, rating: 1200}) 
-      message.channel.send('${user.user} - you have been added to the matchmaking queue.')
+      looking_for_games.push(message.member) 
+      message.channel.send(message.member + ': You have been added to the matchmaking queue.')
     }
   }
 
-  if (message.content === '!joinladder' || message.content === ':ladder:') {
-    if (message.channel.name === 'race_signups') {
-      message.member.addRole('FBW Ladder')
-      message.member.send('You have been added to the #ladder channel. Please read the rules and refer to the "about" page on http://fbwladder.com for more information.')
-    }
-  }
-
-  if (message.content === '!race terran' && message.channel.name === 'race_signups') {
-    message.member.addRole('Terran Main')
-  } else if (message.content === '!race zerg') {
-    message.member.addRole('Zerg Main')
-  } else if (message.content === '!race protoss') {
-    message.member.addRole('Protoss Main')
-  }
+//  if (message.content === '!joinladder' || message.content === ':ladder:') {
+//    if (message.channel.name === 'race_signups') {
+//      role = message.guild.roles.find('name', 'FBW Ladder')
+//      message.member.addRole('FBW Ladder')
+//      message.member.send('You have been added to the #ladder channel. Please read the rules and refer to the "about" page on http://fbwladder.com for more information.')
+//    }
+//  }
+//
+//  if (message.channel.name === 'race_signups') {
+//    console.log('received race msg')
+//    if (message.content === '!race terran' ) {
+//      role = message.guild.roles.find('name', 'Terran Main')
+//      message.member.addRole(role)
+//    } else if (message.content === '!race zerg') {
+//      role = message.guild.roles.find('name', 'Zerg Main')
+//      message.member.addRole(role)
+//    } else if (message.content === '!race protoss') {
+//      role = message.guild.roles.find('name', 'Protoss Main')
+//      message.member.addRole(role)
+//    }
+//  }
 });
 
 client.login(token);

@@ -9,7 +9,7 @@ client.on('ready', () => {
 looking_for_games = [];
 
 client.on('message', message => {
-  if (message.content === '!lfg') {
+  if (message.content === '!lfg' && message.channel.name === 'ladder') {
     user = { user: message.member, rating: 1200 }
     if (looking_for_games.length >= 1) {
       lower_limit = user.rating - 200
@@ -28,11 +28,13 @@ client.on('message', message => {
   }
 
   if (message.content === '!joinladder' || message.content === ':ladder:') {
-    message.member.addRole('FBW Ladder')
-    message.member.send('You have been added to the #ladder channel. Please read the rules and refer to the "about" page on http://fbwladder.com for more information.')
+    if (message.channel.name === 'race_signups') {
+      message.member.addRole('FBW Ladder')
+      message.member.send('You have been added to the #ladder channel. Please read the rules and refer to the "about" page on http://fbwladder.com for more information.')
+    }
   }
 
-  if (message.content === '!race terran') {
+  if (message.content === '!race terran' && message.channel.name === 'race_signups') {
     message.member.addRole('Terran Main')
   } else if (message.content === '!race zerg') {
     message.member.addRole('Zerg Main')

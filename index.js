@@ -24,7 +24,10 @@ client.on('message', message => {
     if (message.channel.name === 'race_signups') {
       role = message.guild.roles.find('name', 'FBW Ladder')
       message.member.addRole(role)
-      message.member.send('You have been added to the #ladder channel. Please read the rules and refer to the "about" page on http://fbwladder.com for more information.')
+      message.member.send('It\'s pretty simple. You can find a game by typing `!lfg` in the #ladder channel. When you are matched with somebody, you can play with them on any server or patch you agree to, and on any map in the iCCup map pool.')
+      message.member.send('When you are finished, one person (most often the winner) should upload the replay at **http://fbwladder.com**. When they do, the other player **must** confirm the match on the website. Just go to the match and click the confirm link.')
+      message.member.send('That\'s it! Rankings will automatically be updated. If you have a problem with a match (bad manner, uploaded a duplicate, potential cheating or other such issues) please report the match via the **Report** button on the match page on the website.')
+      message.member.send('You have been added to the #ladder channel. Please read the rules and refer to the "about" page on http://fbwladder.com for more information. GL HF!')
     }
   }
 

@@ -20,6 +20,14 @@ client.on('message', message => {
     }
   }
 
+  if (message.content === '!cancel' && message.channel.name === 'ladder') {
+    current = looking_for_games.find( member => member.user.username === message.member.user.username)
+    if (current) {
+      looking_for_games.splice(looking_for_games.indexOf(current, 1))
+      message.channel.send(message.member + ': you have been removed from the matchmaking queue.')
+    }
+  }
+
   if (message.content === '!joinladder' || message.content === ':ladder:') {
     if (message.channel.name === 'race_signups') {
       role = message.guild.roles.find('name', 'FBW Ladder')
